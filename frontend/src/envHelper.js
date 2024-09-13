@@ -1,0 +1,1 @@
+export const BACKENDPORT = process.env.REACT_APP_BACKEND

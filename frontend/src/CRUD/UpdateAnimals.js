@@ -55,7 +55,13 @@ const AnimalUpdate = () => {
                         key={animal._id}
                         className="border p-4 rounded-lg shadow-md bg-white hover:shadow-lg transition cursor-pointer"
                         onDoubleClick={() => handleEdit(animal)}
-                    >
+                    >    {animal.imageUrl && (
+                        <img
+                          src={animal.imageUrl}
+                          alt={animal.name}
+                          className='w-full h-48 object-cover rounded mb-4'
+                        />
+                      )}
                         <h3 className="text-xl font-bold mb-2">{animal.name}</h3>
                         <p><strong>Species:</strong> {animal.species}</p>
                         <p><strong>Age:</strong> {animal.age}</p>

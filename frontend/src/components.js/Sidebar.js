@@ -4,7 +4,7 @@ import { Context } from '../App';
 function Sidebar() {
 
   const { crudeMode , setCrudeMode } = useContext(Context)
-  const [selectedOption, setSelectedOption] = useState('add');
+  const [selectedOption, setSelectedOption] = useState('viewAll');
 
   const handleClick = (option) => {
     setSelectedOption(option);

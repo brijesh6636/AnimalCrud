@@ -57,8 +57,14 @@ const DeleteAnimal = () => {
                     <div
                         key={animal._id}
                         className="border p-4 rounded-lg shadow-md bg-white hover:shadow-lg transition cursor-pointer"
-                        onClick={() => handleDeleteClick(animal)}
-                    >
+                        onClick={() => handleDeleteClick(animal)} >
+                        {animal.imageUrl && (
+                            <img
+                                src={animal.imageUrl}
+                                alt={animal.name}
+                                className='w-full h-48 object-cover rounded mb-4'
+                            />
+                        )}
                         <h3 className="text-xl font-bold mb-2">{animal.name}</h3>
                         <p><strong>Species:</strong> {animal.species}</p>
                         <p><strong>Age:</strong> {animal.age}</p>
@@ -73,14 +79,14 @@ const DeleteAnimal = () => {
                         <h2 className="text-xl font-bold mb-4">Delete Animal</h2>
                         <p className="mb-4">Are you sure you want to delete <strong>{selectedAnimal.name}</strong>?</p>
                         <div className="flex justify-between">
-                            <button 
-                                onClick={deleteAnimal} 
+                            <button
+                                onClick={deleteAnimal}
                                 className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
                             >
                                 Delete Animal
                             </button>
-                            <button 
-                                onClick={() => setSelectedAnimal(null)} 
+                            <button
+                                onClick={() => setSelectedAnimal(null)}
                                 className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition"
                             >
                                 Cancel

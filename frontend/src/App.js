@@ -26,7 +26,6 @@ function App() {
             </Layout>
           </ErrorBoundary>
         </Context.Provider>
-      
     </Router>
   );
 }

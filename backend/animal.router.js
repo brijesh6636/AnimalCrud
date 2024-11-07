@@ -1,16 +1,17 @@
 import express from 'express'
 import { Animal } from './model.schema.js';
+import { uploadAnimalCrudCloudinary } from './cloudinary.js';
 
 const router = express.Router()
 
 router.delete('/deleteAll', async (req, res) => {
-    console.log('deleteAll');
-    try {
-        await Animal.deleteMany({}); // Delete all documents in the Animal collection
-        res.status(204).send(); // No content, successful operation
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
+  console.log('deleteAll');
+  try {
+    await Animal.deleteMany({}); // Delete all documents in the Animal collection
+    res.status(204).send(); // No content, successful operation
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 });
 
 // GET all animals
@@ -24,8 +25,13 @@ router.get('/', async (req, res) => {
 });
 
 // POST a new animal
-router.post('/', async (req, res) => {
-  const animal = new Animal(req.body);
+router.post('/', uploadAnimalCrudCloudinary.single('image'), async (req, res) => {
+  const animalData = {
+    ...req.body, 
+    imageUrl: req.file.path
+  }
+
+  const animal = new Animal(animalData)
   try {
     const newAnimal = await animal.save();
     res.status(201).json(newAnimal);
@@ -36,21 +42,21 @@ router.post('/', async (req, res) => {
 
 // PUT (update) an existing animal
 router.put('/:id', async (req, res) => {
-    console.log(req.body); // Logs the incoming request body for debugging
-  
-    try {
-      // Update the animal and return the updated document
-      const updatedAnimal = await Animal.findByIdAndUpdate(req.params.id, req.body, { new: true });
-      
-      if (!updatedAnimal) {
-        return res.status(404).json({ message: 'Animal not found' });
-      }
-  
-      res.json(updatedAnimal);
-    } catch (err) {
-      res.status(400).json({ message: err.message });
+  console.log(req.body); // Logs the incoming request body for debugging
+
+  try {
+    // Update the animal and return the updated document
+    const updatedAnimal = await Animal.findByIdAndUpdate(req.params.id, req.body, { new: true });
+
+    if (!updatedAnimal) {
+      return res.status(404).json({ message: 'Animal not found' });
     }
-  });
+
+    res.json(updatedAnimal);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
 
 // DELETE an animal
 router.delete('/:id', async (req, res) => {
@@ -62,14 +68,6 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-// router.delete('/deleteAll', async (req, res) => {
-//     console.log('deleteAll')
-//     try {
-//         await Animal.deleteMany({}); // Delete all documents in the Animal collection
-//         res.status(204).send(); // No content, successful operation
-//     } catch (err) {
-//         res.status(400).json({ message: err.message });
-//     }
-// });
-  
-  export default router;
+
+
+export default router;

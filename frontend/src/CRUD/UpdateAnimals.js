@@ -63,7 +63,7 @@ const AnimalUpdate = () => {
                         />
                       )}
                         <h3 className="text-xl font-bold mb-2">{animal.name}</h3>
-                        <p><strong>Species:</strong> {animal.species}</p>
+                        <p><strong>Description:</strong> {animal.species}</p>
                         <p><strong>Age:</strong> {animal.age}</p>
                     </div>
                 ))}

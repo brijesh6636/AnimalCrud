@@ -39,7 +39,7 @@ const GetAnimals = () => {
             )}
             <h3 className='text-2xl font-semibold mb-4 text-gray-800'>{animal.name}</h3>
             <p className='text-gray-600 mb-2'>
-              <strong className='text-gray-900'>Species:</strong> {animal.species}
+              <strong className='text-gray-900'>Description</strong> {animal.species}
             </p>
             <p className='text-gray-600'>
               <strong className='text-gray-900'>Age:</strong> {animal.age}

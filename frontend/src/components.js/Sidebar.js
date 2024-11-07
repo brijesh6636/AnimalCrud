@@ -20,7 +20,7 @@ function Sidebar() {
           onClick={() => handleClick('viewAll')}
         >
           <div
-            className={`block px-6 py-3 rounded-lg transition-all duration-300 ${
+            className={`block px-6 py-3 rounded-lg transition-all duration-300 cursor-pointer ${
               selectedOption === 'viewAll'
                 ? 'text-yellow-400 shadow-lg border-l-4 border-yellow-400'
                 : 'text-white hover:bg-gray-800 hover:shadow-inner hover:border-l-4 hover:border-yellow-300'
@@ -34,7 +34,7 @@ function Sidebar() {
           onClick={() => handleClick('add')}
         >
           <div
-            className={`block px-6 py-3 rounded-lg transition-all duration-300 ${
+            className={`block px-6 py-3 rounded-lg transition-all duration-300 cursor-pointer ${
               selectedOption === 'add'
                 ? 'text-yellow-400 shadow-lg border-l-4 border-yellow-400'
                 : 'text-white hover:bg-gray-800 hover:shadow-inner hover:border-l-4 hover:border-yellow-300'
@@ -48,7 +48,7 @@ function Sidebar() {
           onClick={() => handleClick('update')}
         >
           <div
-            className={`block px-6 py-3 rounded-lg transition-all duration-300 ${
+            className={`block px-6 py-3 rounded-lg transition-all duration-300 cursor-pointer ${
               selectedOption === 'update'
                 ? 'text-yellow-400 shadow-lg border-l-4 border-yellow-400'
                 : 'text-white hover:bg-gray-800 hover:shadow-inner hover:border-l-4 hover:border-yellow-300'
@@ -62,7 +62,7 @@ function Sidebar() {
           onClick={() => handleClick('delete')}
         >
           <div
-            className={`block px-6 py-3 rounded-lg transition-all duration-300 ${
+            className={`block px-6 py-3 rounded-lg transition-all duration-300 cursor-pointer ${
               selectedOption === 'delete'
                 ? 'text-yellow-400 shadow-lg border-l-4 border-yellow-400'
                 : 'text-white hover:bg-gray-800 hover:shadow-inner hover:border-l-4 hover:border-yellow-300'

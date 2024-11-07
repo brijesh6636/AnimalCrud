@@ -5,7 +5,6 @@ import { uploadAnimalCrudCloudinary } from './cloudinary.js';
 const router = express.Router()
 
 router.delete('/deleteAll', async (req, res) => {
-  console.log('deleteAll');
   try {
     await Animal.deleteMany({}); // Delete all documents in the Animal collection
     res.status(204).send(); // No content, successful operation
@@ -42,7 +41,6 @@ router.post('/', uploadAnimalCrudCloudinary.single('image'), async (req, res) =>
 
 // PUT (update) an existing animal
 router.put('/:id', async (req, res) => {
-  console.log(req.body); // Logs the incoming request body for debugging
 
   try {
     // Update the animal and return the updated document

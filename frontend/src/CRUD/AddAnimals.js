@@ -16,6 +16,8 @@ const AddAnimal = () => {
   const handleImageChange = (e) => setImage(e.target.files[0]);
 
   const addAnimal = async () => {
+    setStatus('uploaing please wait....')
+    if(!newAnimal.name || !newAnimal.age || !newAnimal.species || !image) return setStatus('Error: All field required')
     const formData = new FormData();
     formData.append('name', newAnimal.name);
     formData.append('species', newAnimal.species);
@@ -50,6 +52,7 @@ const AddAnimal = () => {
           value={newAnimal.name}
           onChange={handleInputChange}
           className='border p-2 w-full rounded'
+          required
         />
       </div>
       <div className='mb-4'>
